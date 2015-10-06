@@ -4,10 +4,10 @@ var Song = Ember.Object.extend({
   title: '',
   rating: 0,
   band: ''
-});
+})
 
 var blackDog = Song.create({
-  title: 'Black Dog',
+  title: 'BlackDog',
   band: 'Led Zeppelin',
   rating: 3
 });
@@ -31,18 +31,12 @@ var SongCollection = Ember.Object.extend({
 });
 
 var songs = SongCollection.create();
-songs.get('content').pushObjects([blackDog, yellowLedbetter, pretender]);
+songs.get('content').pushObject(blackDog);
+songs.get('content').pushObject(yellowLedbetter);
+songs.get('content').pushObject(pretender);
 
-window.songs = songs;
-
-var alwaysWaiting = Song.create({
-  title: 'Always Waiting',
-  band: 'Kaya Project',
-  rating: 5
-});
-
-window.newSong = alwaysWaiting;
-
-export default Ember.Controller.extend({
-  songs: songs.get('sortedContent')
+export default Ember.Route.extend({
+  model: function() {
+    return songs.get('sortedContent');
+  }
 });
