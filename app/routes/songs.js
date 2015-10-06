@@ -4,7 +4,7 @@ var Song = Ember.Object.extend({
   title: '',
   rating: 0,
   band: ''
-})
+});
 
 var blackDog = Song.create({
   title: 'BlackDog',
